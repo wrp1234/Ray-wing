@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.wrp</groupId>
+  <artifactId>ray-wing</artifactId>
+  <version>${revision}</version>
+
+  <packaging>pom</packaging>
+
+  <name>ray-wing</name>
+  <description>
+    Ray-wing是一个基于SpringBoot的自研开发模板，旨在为Java开发者提供一个快速启动企业级项目的脚手架。
+    这个名字结合了"Ray"(光线)和"Wing"(翅膀)，寓意着为开发者的项目带来光明和快速起飞的动力。
+  </description>
+
+  <modules>
+    <module>ray-wing-core</module>
+    <module>ray-wing-user</module>
+    <module>ray-wing-common</module>
+    <module>ray-wing-file</module>
+  </modules>
+
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+
+    <spring.boot.version>3.5.3</spring.boot.version>
+    <mybatis.plus.version>3.5.12</mybatis.plus.version>
+    <hutool.version>5.8.27</hutool.version>
+    <revision>0.0.1</revision>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring.boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-bom</artifactId>
+        <version>${mybatis.plus.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>cn.hutool</groupId>
+        <artifactId>hutool-bom</artifactId>
+        <version>${hutool.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

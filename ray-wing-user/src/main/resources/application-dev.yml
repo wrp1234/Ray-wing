@@ -1,0 +1,19 @@
+
+spring:
+  datasource:
+    url: jdbc:postgresql://10.62.119.226:5437/ray_wing
+    username: postgres
+    password: wrp@PGatSMGI0601
+    hikari:
+      connection-timeout: 30000
+      idle-timeout: 30000
+      max-lifetime: 120000
+      maximum-pool-size: 32
+      minimum-idle: 8
+      auto-commit: true
+
+logging:
+  level:
+    com:
+      wrp:
+        user: debug
