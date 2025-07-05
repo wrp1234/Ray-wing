@@ -10,6 +10,7 @@ import com.wrp.user.entity.SysUserEntity;
  * @author wrp
  * @since 2025-06-30 12:29:49
  */
+//public interface SysUserService extends IService<SysUserEntity>, UserDetailsService {
 public interface SysUserService extends IService<SysUserEntity> {
 
     /**
@@ -21,5 +22,9 @@ public interface SysUserService extends IService<SysUserEntity> {
      * 注册用户
      */
     Long register(RegisterUser registerUser);
+
+    SysUserEntity getByUsername(String username);
+
+    SysUserEntity getByPhone(String phone);
 }
 

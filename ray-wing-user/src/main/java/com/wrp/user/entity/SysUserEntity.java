@@ -13,7 +13,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName(value = "sys.sys_user", autoResultMap = true)
+@TableName(value = "public.sys_user", autoResultMap = true)
 public class SysUserEntity extends BaseEntity {
 
 	/**

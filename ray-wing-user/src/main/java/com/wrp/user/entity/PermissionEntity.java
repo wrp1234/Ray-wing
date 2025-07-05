@@ -13,7 +13,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName(value = "sys.permission", autoResultMap = true)
+@TableName(value = "public.permission", autoResultMap = true)
 public class PermissionEntity extends BaseEntity {
 
 	/**

@@ -53,14 +53,28 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
         return 0L;
     }
 
-    private SysUserEntity getByUsername(String username) {
+    @Override
+    public SysUserEntity getByUsername(String username) {
         return getOne(new LambdaQueryWrapper<SysUserEntity>()
                 .eq(SysUserEntity::getUsername, username));
     }
 
-    private SysUserEntity getByPhone(String phone) {
+    @Override
+    public SysUserEntity getByPhone(String phone) {
         return getOne(new LambdaQueryWrapper<SysUserEntity>()
                 .eq(SysUserEntity::getPhone, phone));
     }
 
+    // 只需要从数据库中查询到用户信息
+    // 密码匹配是框架自动实现了 UsernamePasswordAuthenticationFilter
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        SysUserEntity user = getByUsername(username);
+//        if(user == null) {
+//            throw new UserException("用户未注册");
+//        }
+//        UserDetails userDetails = new User(user);
+//
+//        return userDetails;
+//    }
 }

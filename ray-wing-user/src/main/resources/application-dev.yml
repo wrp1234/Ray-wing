@@ -1,9 +1,9 @@
 
 spring:
   datasource:
-    url: jdbc:postgresql://10.62.119.226:5437/ray_wing
+    url: jdbc:postgresql://127.0.0.1:5432/ray_wing
     username: postgres
-    password: wrp@PGatSMGI0601
+    password: 123456
     hikari:
       connection-timeout: 30000
       idle-timeout: 30000
@@ -17,8 +17,17 @@ spring:
       host: 172.27.100.217
       password: redis123456
 
+  ## SecurityProperties，修改默认配置
+  security:
+    user:
+      name: admin
+      password: 123
+
+
 logging:
   level:
     com:
       wrp:
         user: debug
+    org:
+      springframework: debug
