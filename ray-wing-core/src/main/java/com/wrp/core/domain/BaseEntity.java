@@ -27,6 +27,4 @@ public class BaseEntity {
     @TableLogic
     @JsonIgnore
     private Integer deleted;
-    @JsonIgnore
-    private Long userId;
 }

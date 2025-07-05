@@ -1,6 +1,6 @@
 package com.wrp.user.mapper;
 
-import com.smgi.user.entity.UserRoleEntity;
+import com.wrp.user.entity.UserRoleEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 

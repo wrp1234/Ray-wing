@@ -1,12 +1,13 @@
 package com.wrp.user.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.smgi.db.domain.BaseEntity;
+import com.wrp.core.domain.BaseEntity;
+import com.wrp.user.dict.PermissionType;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- *	${comments}
+ *	权限
  * @author wrp
  * @since 2025-06-30 12:29:49
  */
@@ -16,20 +17,16 @@ import lombok.EqualsAndHashCode;
 public class PermissionEntity extends BaseEntity {
 
 	/**
-	 * $column.comments
+	 * 权限名称
 	 */
 	private String permissionName;
 	/**
-	 * $column.comments
+	 * 描述
 	 */
 	private String description;
 	/**
-	 * $column.comments
+	 * 资源类型
 	 */
-	private String resourceType;
-	/**
-	 * $column.comments
-	 */
-	private String action;
+	private PermissionType type;
 
 }

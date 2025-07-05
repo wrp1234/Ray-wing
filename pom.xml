@@ -15,10 +15,11 @@
   </description>
 
   <modules>
+    <module>ray-wing-common</module>
     <module>ray-wing-core</module>
     <module>ray-wing-user</module>
-    <module>ray-wing-common</module>
     <module>ray-wing-file</module>
+    <module>ray-wing-cache</module>
   </modules>
 
 
@@ -64,7 +65,7 @@
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-test</artifactId>
+      <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>

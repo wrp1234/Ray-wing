@@ -1,12 +1,13 @@
 package com.wrp.user.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.smgi.db.domain.BaseEntity;
+import com.wrp.core.domain.BaseEntity;
+import com.wrp.user.dict.UserStatus;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- *	${comments}
+ *	用户信息
  * @author wrp
  * @since 2025-06-30 12:29:49
  */
@@ -16,32 +17,32 @@ import lombok.EqualsAndHashCode;
 public class SysUserEntity extends BaseEntity {
 
 	/**
-	 * $column.comments
+	 * 用户名
 	 */
 	private String username;
 	/**
-	 * $column.comments
+	 * 密码
 	 */
 	private String password;
 	/**
-	 * $column.comments
+	 * 状态
 	 */
-	private Integer status;
+	private UserStatus status;
 	/**
-	 * $column.comments
+	 * 完整名称
 	 */
 	private String fullName;
 	/**
-	 * $column.comments
+	 * 电话
 	 */
 	private String phone;
 	/**
-	 * $column.comments
+	 * 邮箱
 	 */
 	private String email;
 	/**
-	 * $column.comments
+	 * 头像
 	 */
-	private String avatarUrl;
+	private Long avatar;
 
 }

@@ -1,7 +1,9 @@
 package com.wrp.user.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.smgi.user.entity.SysUserEntity;
+import com.wrp.user.controller.param.LoginUser;
+import com.wrp.user.controller.param.RegisterUser;
+import com.wrp.user.entity.SysUserEntity;
 
 /**
  *
@@ -10,5 +12,14 @@ import com.smgi.user.entity.SysUserEntity;
  */
 public interface SysUserService extends IService<SysUserEntity> {
 
+    /**
+     * 登录
+     */
+    void login(LoginUser loginUser);
+
+    /**
+     * 注册用户
+     */
+    Long register(RegisterUser registerUser);
 }
 

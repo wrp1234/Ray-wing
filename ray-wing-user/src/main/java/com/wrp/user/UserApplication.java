@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author wrp
  * @since 2025年06月30日 11:58
  **/
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.wrp")
 public class UserApplication {
 
     public static void main(String[] args) {

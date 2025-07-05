@@ -1,73 +1,57 @@
 package com.wrp.user.controller;
 
-import java.util.Arrays;
-
-import com.smgi.common.result.Result;
-import com.smgi.common.result.ResultUtils;
+import com.wrp.core.result.Result;
+import com.wrp.user.controller.param.LoginUser;
+import com.wrp.user.controller.param.RegisterUser;
+import com.wrp.user.entity.SysUserEntity;
+import com.wrp.user.exception.UserException;
+import com.wrp.user.service.SysUserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-
-import com.smgi.user.entity.SysUserEntity;
-import com.smgi.user.service.SysUserService;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
 
 /**
- * ${comments}
+ * 用户接口
  *
  * @author wrp
  * @since 2025-06-30 12:29:49
  */
 @Validated
 @RestController
-@RequestMapping("user/sysuser")
+@RequestMapping("user")
 @RequiredArgsConstructor
 public class SysUserController {
 
     private final SysUserService sysUserService;
 
+    /**
+     * 用户名密码登录
+     */
+    @PostMapping("login")
+    public Result<Void> login(@RequestBody @Validated LoginUser loginUser) {
+        sysUserService.login(loginUser);
+        return Result.success();
+    }
 
+    /**
+     * 注册用户
+     */
+    @PostMapping("register")
+    public Result<Long> register(@RequestBody @Validated RegisterUser registerUser) {
+        return Result.success(sysUserService.register(registerUser));
+    }
 
     /**
      * 信息
      */
     @GetMapping("{id}")
     public Result<SysUserEntity> info(@PathVariable("id") Long id){
-		SysUserEntity sysUser = sysUserService.getById(id);
-
-        return ResultUtils.success(sysUser);
+        Optional<SysUserEntity> optById = sysUserService.getOptById(id);
+        if(optById.isEmpty()){
+            throw new UserException("用户不存在");
+        }
+        return Result.success(optById.get());
     }
-
-    /**
-     * 保存
-     */
-    @PostMapping
-    public Result<Void> save(@RequestBody SysUserEntity sysUser){
-		sysUserService.save(sysUser);
-
-        return ResultUtils.success();
-    }
-
-    /**
-     * 修改
-     */
-    @PutMapping
-    public Result<Void> update(@RequestBody SysUserEntity sysUser){
-		sysUserService.updateById(sysUser);
-
-        return ResultUtils.success();
-    }
-
-    /**
-     * 删除
-     */
-    @DeleteMapping
-    public Result<Void> delete(@RequestBody Long[] ids){
-		sysUserService.removeByIds(Arrays.asList(ids));
-
-        return ResultUtils.success();
-    }
-
 }

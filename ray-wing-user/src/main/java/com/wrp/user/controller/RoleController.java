@@ -1,9 +1,8 @@
 package com.wrp.user.controller;
 
-import com.smgi.common.result.Result;
-import com.smgi.common.result.ResultUtils;
-import com.smgi.user.entity.RoleEntity;
-import com.smgi.user.service.RoleService;
+import com.wrp.core.result.Result;
+import com.wrp.user.entity.RoleEntity;
+import com.wrp.user.service.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +11,7 @@ import java.util.Arrays;
 
 
 /**
- * ${comments}
+ * 角色接口
  *
  * @author wrp
  * @since 2025-06-30 12:29:49
@@ -33,7 +32,7 @@ public class RoleController {
     public Result<RoleEntity> info(@PathVariable("id") Long id){
 		RoleEntity role = roleService.getById(id);
 
-        return ResultUtils.success(role);
+        return Result.success(role);
     }
 
     /**
@@ -43,7 +42,7 @@ public class RoleController {
     public Result<Void> save(@RequestBody RoleEntity role){
 		roleService.save(role);
 
-        return ResultUtils.success();
+        return Result.success();
     }
 
     /**
@@ -53,7 +52,7 @@ public class RoleController {
     public Result<Void> update(@RequestBody RoleEntity role){
 		roleService.updateById(role);
 
-        return ResultUtils.success();
+        return Result.success();
     }
 
     /**
@@ -63,7 +62,7 @@ public class RoleController {
     public Result<Void> delete(@RequestBody Long[] ids){
 		roleService.removeByIds(Arrays.asList(ids));
 
-        return ResultUtils.success();
+        return Result.success();
     }
 
 }

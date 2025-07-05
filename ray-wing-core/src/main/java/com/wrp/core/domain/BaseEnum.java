@@ -14,5 +14,5 @@ public interface BaseEnum {
     /**
      * 获取值
      */
-    int getValue();
+    String getValue();
 }

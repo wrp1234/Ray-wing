@@ -2,9 +2,9 @@ package com.wrp.user.service.impl;
 
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.smgi.user.mapper.RoleMapper;
-import com.smgi.user.entity.RoleEntity;
-import com.smgi.user.service.RoleService;
+import com.wrp.user.mapper.RoleMapper;
+import com.wrp.user.entity.RoleEntity;
+import com.wrp.user.service.RoleService;
 
 /**
  *

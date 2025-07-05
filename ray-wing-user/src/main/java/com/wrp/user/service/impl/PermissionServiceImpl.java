@@ -2,9 +2,9 @@ package com.wrp.user.service.impl;
 
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.smgi.user.mapper.PermissionMapper;
-import com.smgi.user.entity.PermissionEntity;
-import com.smgi.user.service.PermissionService;
+import com.wrp.user.mapper.PermissionMapper;
+import com.wrp.user.entity.PermissionEntity;
+import com.wrp.user.service.PermissionService;
 
 /**
  *

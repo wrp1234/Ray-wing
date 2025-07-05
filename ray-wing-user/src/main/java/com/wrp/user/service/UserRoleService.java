@@ -1,7 +1,7 @@
 package com.wrp.user.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.smgi.user.entity.UserRoleEntity;
+import com.wrp.user.entity.UserRoleEntity;
 
 /**
  *

@@ -1,7 +1,7 @@
 package com.wrp.user.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.smgi.user.entity.PermissionEntity;
+import com.wrp.user.entity.PermissionEntity;
 
 /**
  *

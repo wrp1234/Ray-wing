@@ -1,10 +1,19 @@
 package com.wrp.user.service.impl;
 
-import org.springframework.stereotype.Service;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.smgi.user.mapper.SysUserMapper;
-import com.smgi.user.entity.SysUserEntity;
-import com.smgi.user.service.SysUserService;
+import com.wrp.user.controller.param.LoginUser;
+import com.wrp.user.controller.param.RegisterUser;
+import com.wrp.user.dict.UserStatus;
+import com.wrp.user.entity.SysUserEntity;
+import com.wrp.user.exception.UserException;
+import com.wrp.user.mapper.SysUserMapper;
+import com.wrp.user.service.CaptchaService;
+import com.wrp.user.service.SysUserService;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.BeanUtils;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 /**
  *
@@ -12,7 +21,46 @@ import com.smgi.user.service.SysUserService;
  * @since 2025-06-30 12:29:49
  */
 @Service
+@AllArgsConstructor
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity>
         implements SysUserService {
+
+    private final PasswordEncoder passwordEncoder;
+    private final CaptchaService captchaService;
+
+    @Override
+    public void login(LoginUser loginUser) {
+        if(!captchaService.verify(loginUser.getUuid(), loginUser.getCode())) {
+            throw new UserException("验证码错误");
+        }
+    }
+
+    @Override
+    public Long register(RegisterUser registerUser) {
+        SysUserEntity user = getByUsername(registerUser.getUsername());
+        if(user != null) {
+            throw new UserException("用户名已被使用");
+        }
+        if(getByPhone(registerUser.getPhone()) != null) {
+            throw new UserException("电话已被使用");
+        }
+
+        user = new SysUserEntity();
+        BeanUtils.copyProperties(registerUser, user);
+        user.setPassword(passwordEncoder.encode(registerUser.getPassword()));
+        user.setStatus(UserStatus.ACTIVE);
+        save(user);
+        return 0L;
+    }
+
+    private SysUserEntity getByUsername(String username) {
+        return getOne(new LambdaQueryWrapper<SysUserEntity>()
+                .eq(SysUserEntity::getUsername, username));
+    }
+
+    private SysUserEntity getByPhone(String phone) {
+        return getOne(new LambdaQueryWrapper<SysUserEntity>()
+                .eq(SysUserEntity::getPhone, phone));
+    }
 
 }

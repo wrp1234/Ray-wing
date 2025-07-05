@@ -1,18 +1,16 @@
 package com.wrp.user.controller;
 
-import com.smgi.common.result.Result;
-import com.smgi.common.result.ResultUtils;
-import com.smgi.user.entity.PermissionEntity;
-import com.smgi.user.service.PermissionService;
+import com.wrp.core.result.Result;
+import com.wrp.user.entity.PermissionEntity;
+import com.wrp.user.service.PermissionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 
-
 /**
- * ${comments}
+ * 权限接口
  *
  * @author wrp
  * @since 2025-06-30 12:29:49
@@ -35,7 +33,7 @@ public class PermissionController {
     public Result<PermissionEntity> info(@PathVariable("id") Long id){
 		PermissionEntity permission = permissionService.getById(id);
 
-        return ResultUtils.success(permission);
+        return Result.success(permission);
     }
 
     /**
@@ -45,7 +43,7 @@ public class PermissionController {
     public Result<Void> save(@RequestBody PermissionEntity permission){
 		permissionService.save(permission);
 
-        return ResultUtils.success();
+        return Result.success();
     }
 
     /**
@@ -55,7 +53,7 @@ public class PermissionController {
     public Result<Void> update(@RequestBody PermissionEntity permission){
 		permissionService.updateById(permission);
 
-        return ResultUtils.success();
+        return Result.success();
     }
 
     /**
@@ -65,7 +63,7 @@ public class PermissionController {
     public Result<Void> delete(@RequestBody Long[] ids){
 		permissionService.removeByIds(Arrays.asList(ids));
 
-        return ResultUtils.success();
+        return Result.success();
     }
 
 }

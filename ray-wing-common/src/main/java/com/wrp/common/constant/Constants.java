@@ -6,4 +6,6 @@ package com.wrp.common.constant;
  * @since 2025年07月04日 21:10
  */
 public class Constants {
+
+    public static final String CAPATCH = "captcha";
 }
