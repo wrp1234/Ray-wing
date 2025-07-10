@@ -44,9 +44,17 @@ public class SysUserController {
     }
 
     /**
+     * 注销登录
+     */
+    @GetMapping("logout/{id}")
+    public Result<Void> logout(@PathVariable Long id) {
+        return Result.success();
+    }
+
+    /**
      * 信息
      */
-    @GetMapping("{id}")
+    @GetMapping("info/{id}")
     public Result<SysUserEntity> info(@PathVariable("id") Long id){
         Optional<SysUserEntity> optById = sysUserService.getOptById(id);
         if(optById.isEmpty()){

@@ -16,14 +16,16 @@ import java.util.List;
 public class User implements UserDetails {
 
     private final SysUserEntity user;
+    Collection<? extends GrantedAuthority> authorities;
 
-    public User(SysUserEntity user) {
+    public User(SysUserEntity user, Collection<? extends GrantedAuthority> authorities) {
         this.user = user;
+        this.authorities = authorities;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return this.authorities;
     }
 
     @Override

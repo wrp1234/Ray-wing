@@ -12,6 +12,9 @@ import com.wrp.user.service.CaptchaService;
 import com.wrp.user.service.SysUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -67,14 +70,19 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
 
     // 只需要从数据库中查询到用户信息
     // 密码匹配是框架自动实现了 UsernamePasswordAuthenticationFilter
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        SysUserEntity user = getByUsername(username);
-//        if(user == null) {
-//            throw new UserException("用户未注册");
-//        }
-//        UserDetails userDetails = new User(user);
-//
-//        return userDetails;
-//    }
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        SysUserEntity user = getByUsername(username);
+        if(user == null) {
+            throw new UserException("用户未注册");
+        }
+
+        return User.builder()
+                .username(user.getUsername())
+                .password(user.getPassword())
+                .accountExpired(false)
+                .accountLocked(false)
+                .credentialsExpired(false)
+                .build();
+    }
 }
