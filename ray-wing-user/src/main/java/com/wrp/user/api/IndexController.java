@@ -23,9 +23,4 @@ public class IndexController {
     public String login() {
         return "login";
     }
-
-    @GetMapping("show")
-    public String show(Model model, @RegisteredOauth) {
-
-    }
 }
