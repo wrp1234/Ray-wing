@@ -3,13 +3,17 @@ package com.wrp.user.security;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+import org.springframework.security.web.session.SessionInformationExpiredStrategy;
 
 /**
   * 安全配置
@@ -23,6 +27,9 @@ public class SecurityConfig {
 
     private final AuthenticationSuccessHandler authenticationSuccessHandler;
     private final AuthenticationFailureHandler authenticationFailureHandler;
+    private final LogoutSuccessHandler logoutSuccessHandler;
+    private final AuthenticationEntryPoint authenticationEntryPoint;
+    private final SessionInformationExpiredStrategy sessionInformationExpiredStrategy;
 
     // 自适应密码编码器：bcrypt
     @Bean
@@ -49,7 +56,9 @@ public class SecurityConfig {
                         // 自定义用户名和密码
                         .usernameParameter("username")
                         .passwordParameter("password")
+                        // 登录页面
                         .loginPage("/login")
+                        // 登录处理接口，需要和登录表单提交的接口url一致
                         .loginProcessingUrl("/user/login")
                         // 无需认证
                         .permitAll()
@@ -59,12 +68,25 @@ public class SecurityConfig {
                         .successHandler(authenticationSuccessHandler)
                         // 认证失败后的处理器
                         .failureHandler(authenticationFailureHandler)
-
-                );
-                // 浏览器自带的基本方式授权
+                )
+                // 注销成功时的处理器
+                .logout(logout ->logout.logoutSuccessHandler(logoutSuccessHandler))
+                // 请求未认证的处理
+                .exceptionHandling(exception -> exception.authenticationEntryPoint(authenticationEntryPoint))
+                .sessionManagement(session -> session
+                        // 最大登录数
+                        .maximumSessions(1)
+                        // session过期策略处理器
+                        .expiredSessionStrategy(sessionInformationExpiredStrategy))
+        ;
+                // 浏览器自带的基本方式授权（基本不用）
 //                .httpBasic(Customizer.withDefaults());
+
         // 关闭csrf攻击防御（通过一个隐藏的表单字段实现）
         http.csrf(AbstractHttpConfigurer::disable);
+
+        // 支持跨域
+        http.cors(Customizer.withDefaults());
         return http.build();
     }
 

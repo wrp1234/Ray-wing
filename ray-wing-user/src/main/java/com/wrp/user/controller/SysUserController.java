@@ -26,30 +26,30 @@ public class SysUserController {
 
     private final SysUserService sysUserService;
 
-    /**
-     * 用户名密码登录
-     */
-    @PostMapping("login")
-    public Result<Void> login(@RequestBody @Validated LoginUser loginUser) {
-        sysUserService.login(loginUser);
-        return Result.success();
-    }
-
-    /**
-     * 注册用户
-     */
-    @PostMapping("register")
-    public Result<Long> register(@RequestBody @Validated RegisterUser registerUser) {
-        return Result.success(sysUserService.register(registerUser));
-    }
-
-    /**
-     * 注销登录
-     */
-    @GetMapping("logout/{id}")
-    public Result<Void> logout(@PathVariable Long id) {
-        return Result.success();
-    }
+//    /**
+//     * 用户名密码登录
+//     */
+//    @PostMapping("login")
+//    public Result<Void> login(@RequestBody @Validated LoginUser loginUser) {
+//        sysUserService.login(loginUser);
+//        return Result.success();
+//    }
+//
+//    /**
+//     * 注册用户
+//     */
+//    @PostMapping("register")
+//    public Result<Long> register(@RequestBody @Validated RegisterUser registerUser) {
+//        return Result.success(sysUserService.register(registerUser));
+//    }
+//
+//    /**
+//     * 注销登录
+//     */
+//    @GetMapping("logout/{id}")
+//    public Result<Void> logout(@PathVariable Long id) {
+//        return Result.success();
+//    }
 
     /**
      * 信息
