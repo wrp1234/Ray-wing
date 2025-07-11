@@ -23,6 +23,13 @@ spring:
       name: admin
       password: 123
 
+    oauth2:
+      client:
+        registration:
+          # 授权码方式oauth2
+          github:
+            client-id: abc
+            client-secret: ccc
 
 logging:
   level:

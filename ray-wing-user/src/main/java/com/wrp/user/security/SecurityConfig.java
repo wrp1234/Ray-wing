@@ -4,12 +4,14 @@ import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
@@ -23,6 +25,7 @@ import org.springframework.security.web.session.SessionInformationExpiredStrateg
 @Configuration
 @AllArgsConstructor
 //@EnableWebSecurity // 开启Security自定义配置，Springboot可以省略(SpringBootWebSecurityConfiguration)
+//@EnableMethodSecurity // 基于方法的授权
 public class SecurityConfig {
 
     private final AuthenticationSuccessHandler authenticationSuccessHandler;
@@ -30,6 +33,7 @@ public class SecurityConfig {
     private final LogoutSuccessHandler logoutSuccessHandler;
     private final AuthenticationEntryPoint authenticationEntryPoint;
     private final SessionInformationExpiredStrategy sessionInformationExpiredStrategy;
+    private final AccessDeniedHandler accessDeniedHandler;
 
     // 自适应密码编码器：bcrypt
     @Bean
@@ -44,6 +48,11 @@ public class SecurityConfig {
         http
                 // 所有请求开启授权保护
                 .authorizeHttpRequests(authorize -> authorize
+                        // 权限-资源
+//                        .requestMatchers("/user/list").hasAnyAuthority("USER_LIST")
+//                        .requestMatchers("/user/register").hasAnyAuthority("USER_REGISTER")
+                        // 角色-资源
+                        .requestMatchers("/user/list").hasRole("ADMIN")
                         // 对所有请求开启授权保护
                         .anyRequest()
                         // 已认证的请求会被自动授权
@@ -72,7 +81,10 @@ public class SecurityConfig {
                 // 注销成功时的处理器
                 .logout(logout ->logout.logoutSuccessHandler(logoutSuccessHandler))
                 // 请求未认证的处理
-                .exceptionHandling(exception -> exception.authenticationEntryPoint(authenticationEntryPoint))
+                .exceptionHandling(exception -> exception
+                        .authenticationEntryPoint(authenticationEntryPoint)
+                        .accessDeniedHandler(accessDeniedHandler)
+                )
                 .sessionManagement(session -> session
                         // 最大登录数
                         .maximumSessions(1)

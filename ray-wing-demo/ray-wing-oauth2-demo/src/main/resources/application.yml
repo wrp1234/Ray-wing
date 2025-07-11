@@ -1,0 +1,13 @@
+server:
+  port: 45601
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          # 授权码方式oauth2
+          # 默认回调接口 http://localhost:8080/login/oauth2/code/github
+          github:
+            client-id: Ov23ct7r8Z4OKkefjmgh
+            client-secret: e7b5ce4ca90cc1a230bc2b8410a0fcb86a209576

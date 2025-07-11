@@ -39,11 +39,25 @@ CREATE TABLE permission
     create_time     TIMESTAMP WITHOUT TIME ZONE DEFAULT now(),
     update_time     TIMESTAMP WITHOUT TIME ZONE DEFAULT now(),
     deleted         smallint            NOT NULL DEFAULT 0,
-    permission_name VARCHAR(100) UNIQUE NOT NULL,
-    description     TEXT,
-    resource_type   smallint         NOT NULL
+    permission_name VARCHAR(100) NOT NULL,
+    permission_identify VARCHAR(100) UNIQUE NOT NULL,
+    description     TEXT
 );
 
+CREATE TABLE api_resource
+(
+    id            bigint PRIMARY KEY,
+    create_time   TIMESTAMP WITHOUT TIME ZONE DEFAULT now(),
+    update_time   TIMESTAMP WITHOUT TIME ZONE DEFAULT now(),
+    deleted       smallint     NOT NULL DEFAULT 0,
+    resource_name VARCHAR(100) NOT NULL,
+    resource_type   smallint         NOT NULL,
+    resource_identify VARCHAR(100) NOT NULL,
+    description   TEXT
+);
+
+-- 复合索引确保接口路径和方法的唯一性
+CREATE UNIQUE INDEX idx_api_resource_identify_type ON api_resource (resource_identify, resource_type);
 
 --  用户-角色关联表 (user_role)
 CREATE TABLE user_role
@@ -79,3 +93,21 @@ CREATE TABLE role_permission
 CREATE INDEX idx_role_permission_role ON role_permission (role_id);
 CREATE INDEX idx_role_permission_permission ON role_permission (permission_id);
 CREATE UNIQUE INDEX idx_role_permission_permission_ids ON role_permission (role_id, permission_id);
+
+
+-- 接口-权限关联表 (api_resource_permission)
+CREATE TABLE api_resource_permission
+(
+    id            bigint PRIMARY KEY,
+    create_time   TIMESTAMP WITHOUT TIME ZONE DEFAULT now(),
+    update_time   TIMESTAMP WITHOUT TIME ZONE DEFAULT now(),
+    deleted       smallint NOT NULL DEFAULT 0,
+    resource_id   bigint   NOT NULL,
+    permission_id bigint   NOT NULL,
+    assigned_by   bigint
+);
+
+-- 索引
+CREATE INDEX idx_api_resource_permission_resource ON api_resource_permission (resource_id);
+CREATE INDEX idx_api_resource_permission_permission ON api_resource_permission (permission_id);
+CREATE UNIQUE INDEX idx_api_resource_permission_permission_ids ON api_resource_permission (resource_id, permission_id);

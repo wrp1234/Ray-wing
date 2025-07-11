@@ -1,6 +1,7 @@
 package com.wrp.user.api;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
@@ -21,5 +22,10 @@ public class IndexController {
     @GetMapping("/login")
     public String login() {
         return "login";
+    }
+
+    @GetMapping("show")
+    public String show(Model model, @RegisteredOauth) {
+
     }
 }

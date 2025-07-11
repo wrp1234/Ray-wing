@@ -12,11 +12,15 @@ import com.wrp.user.service.CaptchaService;
 import com.wrp.user.service.SysUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -77,12 +81,20 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
             throw new UserException("用户未注册");
         }
 
+        // 固定权限设置
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+        grantedAuthorities.add(()-> "USER_LIST");
+//        grantedAuthorities.add(()-> "USER_REGISTER");
+
         return User.builder()
                 .username(user.getUsername())
                 .password(user.getPassword())
                 .accountExpired(false)
                 .accountLocked(false)
                 .credentialsExpired(false)
+                // authorities和roles不能一起用
+//                .authorities(grantedAuthorities)
+                .roles("ADMIN")
                 .build();
     }
 }
