@@ -20,6 +20,7 @@
     <module>ray-wing-user</module>
     <module>ray-wing-file</module>
     <module>ray-wing-cache</module>
+    <module>ray-wing-ai</module>
   </modules>
 
 
