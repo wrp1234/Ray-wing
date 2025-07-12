@@ -4,14 +4,14 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.wrp.user.controller.param.LoginUser;
 import com.wrp.user.controller.param.RegisterUser;
 import com.wrp.user.entity.SysUserEntity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  *
  * @author wrp
  * @since 2025-06-30 12:29:49
  */
-//public interface SysUserService extends IService<SysUserEntity>, UserDetailsService {
-public interface SysUserService extends IService<SysUserEntity> {
+public interface SysUserService extends IService<SysUserEntity>, UserDetailsService {
 
     /**
      * 登录

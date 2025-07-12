@@ -1,5 +1,9 @@
 package com.wrp.user.api;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +18,9 @@ public class DemoController {
 
     @GetMapping()
     public String demo() {
-        return "hello：" + System.currentTimeMillis();
+        SecurityContext context = SecurityContextHolder.getContext();
+        Authentication authentication = context.getAuthentication();
+        User principal = (User) authentication.getPrincipal();
+        return principal.getUsername() + " ：" + System.currentTimeMillis();
     }
 }
