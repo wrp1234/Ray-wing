@@ -8,10 +8,10 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>langchain4j-03boot-integration</artifactId>
+    <artifactId>langchain4j-08chat-memory</artifactId>
     <packaging>jar</packaging>
 
-    <name>langchain4j-03boot-integration</name>
+    <name>langchain4j-08chat-memory</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -19,16 +19,22 @@
     </properties>
 
     <dependencies>
-        <!--springboot整合低阶api-->
+        <!--    基础API    -->
         <dependency>
             <groupId>dev.langchain4j</groupId>
-            <artifactId>langchain4j-open-ai-spring-boot-starter</artifactId>
+            <artifactId>langchain4j-open-ai</artifactId>
         </dependency>
 
-        <!--springboot整合高阶api-->
+        <!--    高级API    -->
         <dependency>
             <groupId>dev.langchain4j</groupId>
-            <artifactId>langchain4j-spring-boot-starter</artifactId>
+            <artifactId>langchain4j</artifactId>
+        </dependency>
+
+        <!--    streaming高阶api    -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-reactor</artifactId>
         </dependency>
     </dependencies>
 </project>

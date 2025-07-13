@@ -8,27 +8,31 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>langchain4j-03boot-integration</artifactId>
+    <artifactId>langchain4j-07chat-stream</artifactId>
     <packaging>jar</packaging>
 
-    <name>langchain4j-03boot-integration</name>
+    <name>langchain4j-07chat-stream</name>
     <url>http://maven.apache.org</url>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
     <dependencies>
-        <!--springboot整合低阶api-->
+        <!--    基础API    -->
         <dependency>
             <groupId>dev.langchain4j</groupId>
-            <artifactId>langchain4j-open-ai-spring-boot-starter</artifactId>
+            <artifactId>langchain4j-open-ai</artifactId>
+            <!--            <version>${langchain4j.version}</version>-->
         </dependency>
 
-        <!--springboot整合高阶api-->
+        <!--    高级API    -->
         <dependency>
             <groupId>dev.langchain4j</groupId>
-            <artifactId>langchain4j-spring-boot-starter</artifactId>
+            <artifactId>langchain4j</artifactId>
+            <!--            <version>${langchain4j.version}</version>-->
+        </dependency>
+
+        <!--    streaming高阶api    -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-reactor</artifactId>
         </dependency>
     </dependencies>
 </project>

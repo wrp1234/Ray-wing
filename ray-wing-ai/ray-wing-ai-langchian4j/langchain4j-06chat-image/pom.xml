@@ -8,10 +8,10 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>langchain4j-03boot-integration</artifactId>
+    <artifactId>langchain4j-06chat-image</artifactId>
     <packaging>jar</packaging>
 
-    <name>langchain4j-03boot-integration</name>
+    <name>langchain4j-06chat-image</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -19,6 +19,7 @@
     </properties>
 
     <dependencies>
+
         <!--springboot整合低阶api-->
         <dependency>
             <groupId>dev.langchain4j</groupId>
@@ -30,5 +31,12 @@
             <groupId>dev.langchain4j</groupId>
             <artifactId>langchain4j-spring-boot-starter</artifactId>
         </dependency>
+
+        <!--    整合springboot-dashscope https://docs.langchain4j.dev/integrations/language-models/dashscope/#spring-boot    -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-community-dashscope-spring-boot-starter</artifactId>
+        </dependency>
     </dependencies>
+
 </project>

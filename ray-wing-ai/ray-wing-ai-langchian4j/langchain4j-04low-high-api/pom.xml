@@ -14,4 +14,31 @@
     <name>langchain4j-04low-high-api</name>
     <url>http://maven.apache.org</url>
 
+    <dependencies>
+        <!--    基础API    -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-open-ai</artifactId>
+            <!--            <version>${langchain4j.version}</version>-->
+        </dependency>
+
+        <!--    高级API    -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j</artifactId>
+            <!--            <version>${langchain4j.version}</version>-->
+        </dependency>
+
+        <!--springboot整合低阶api-->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-open-ai-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!--springboot整合高阶api-->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
 </project>

@@ -19,6 +19,12 @@
         <module>langchain4j-02multi-model-together</module>
         <module>langchain4j-03boot-integration</module>
         <module>langchain4j-04low-high-api</module>
+        <module>langchain4j-05model-parameters</module>
+        <module>langchain4j-06chat-image</module>
+        <module>langchain4j-07chat-stream</module>
+        <module>langchain4j-08chat-memory</module>
+        <module>langchain4j-09chat-prompt</module>
+        <module>langchain4j-10chat-persistance</module>
     </modules>
 
     <properties>
@@ -33,31 +39,31 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!--    基础API    -->
-        <dependency>
-            <groupId>dev.langchain4j</groupId>
-            <artifactId>langchain4j-open-ai</artifactId>
+<!--        &lt;!&ndash;    基础API    &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>dev.langchain4j</groupId>-->
+<!--            <artifactId>langchain4j-open-ai</artifactId>-->
+<!--            &lt;!&ndash;            <version>${langchain4j.version}</version>&ndash;&gt;-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash;    高级API    &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>dev.langchain4j</groupId>-->
+<!--            <artifactId>langchain4j</artifactId>-->
             <!--            <version>${langchain4j.version}</version>-->
-        </dependency>
+<!--        </dependency>-->
 
-        <!--    高级API    -->
-        <dependency>
-            <groupId>dev.langchain4j</groupId>
-            <artifactId>langchain4j</artifactId>
-            <!--            <version>${langchain4j.version}</version>-->
-        </dependency>
+<!--        &lt;!&ndash;springboot整合低阶api&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>dev.langchain4j</groupId>-->
+<!--            <artifactId>langchain4j-open-ai-spring-boot-starter</artifactId>-->
+<!--        </dependency>-->
 
-        <!--springboot整合低阶api-->
-        <dependency>
-            <groupId>dev.langchain4j</groupId>
-            <artifactId>langchain4j-open-ai-spring-boot-starter</artifactId>
-        </dependency>
-
-        <!--springboot整合高阶api-->
-        <dependency>
-            <groupId>dev.langchain4j</groupId>
-            <artifactId>langchain4j-spring-boot-starter</artifactId>
-        </dependency>
+<!--        &lt;!&ndash;springboot整合高阶api&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>dev.langchain4j</groupId>-->
+<!--            <artifactId>langchain4j-spring-boot-starter</artifactId>-->
+<!--        </dependency>-->
     </dependencies>
 
 
