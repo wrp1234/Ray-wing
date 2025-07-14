@@ -137,3 +137,19 @@ server:
 ## function calling
 
 
+## 向量数据库
+> 向量是有大小、有方向的 
+> 
+> 用于计算相似性(方向、大小)
+> 
+### 三件套
+1. Embedding Model 模型
+   1. 将文字、文档、图片等转为浮点数数组
+2. Embedding Store 存储
+   1. 存储和检索高纬度向量数据的存储库，相似性查找
+3. EmbeddingSearchRequest 查询
+
+`docker run -p 6333:6333 -p 6334:6334 qdrant/qdrant`
+- 6333 HTTP 浏览器web界面
+- 6334 用于gRPC
+- http://localhost:6333/dashboard
