@@ -1,0 +1,13 @@
+server:
+  port: 9008
+  servlet:
+    # 设置编码格式，防止流式响应返回乱码
+    encoding:
+      charset: utf-8
+      enabled: true
+      force: true
+
+
+spring:
+  application:
+    name: langchain4j-08chat-memory

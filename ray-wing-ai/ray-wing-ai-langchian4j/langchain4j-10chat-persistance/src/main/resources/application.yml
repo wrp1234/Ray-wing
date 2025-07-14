@@ -1,0 +1,18 @@
+server:
+  port: 9010
+  servlet:
+    # 设置编码格式，防止流式响应返回乱码
+    encoding:
+      charset: utf-8
+      enabled: true
+      force: true
+
+
+spring:
+  application:
+    name: langchain4j-10chat-persistance
+  data:
+    redis:
+      host: 172.27.100.217
+      password: redis123456
+      database: 1

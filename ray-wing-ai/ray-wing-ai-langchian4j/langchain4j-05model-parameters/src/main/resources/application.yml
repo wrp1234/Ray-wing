@@ -1,0 +1,17 @@
+server:
+  port: 9005
+
+spring:
+  application:
+    name: langchain4j-05model-parameters
+
+langchain4j:
+  open-ai:
+    chat-model:
+      log-requests: true
+      log-responses: true
+
+logging:
+  level:
+    dev:
+      langchain4j: debug

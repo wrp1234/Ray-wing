@@ -1,0 +1,14 @@
+server:
+  port: 9004
+
+spring:
+  application:
+    name: langchain4j-04low-high-api
+
+langchain4j:
+  open-ai:
+    chat-model:
+      ## 从环境变量读取
+      api-key: ${ALI_AI_KEY}
+      model-name: qwen-plus-2025-04-28
+      base-url: https://dashscope.aliyuncs.com/compatible-mode/v1

@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.wrp</groupId>
+        <artifactId>ray-wing-ai</artifactId>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>ray-wing-ai-langchian4j</artifactId>
+    <packaging>pom</packaging>
+
+    <name>ray-wing-ai-langchian4j</name>
+    <description>跟着阳哥学langchain4j</description>
+
+    <modules>
+        <module>langchain4j-01helloworld</module>
+        <module>langchain4j-02multi-model-together</module>
+        <module>langchain4j-03boot-integration</module>
+        <module>langchain4j-04low-high-api</module>
+        <module>langchain4j-05model-parameters</module>
+        <module>langchain4j-06chat-image</module>
+        <module>langchain4j-07chat-stream</module>
+        <module>langchain4j-08chat-memory</module>
+        <module>langchain4j-09chat-prompt</module>
+        <module>langchain4j-10chat-persistance</module>
+        <module>langchain4j-11function-call</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+<!--        &lt;!&ndash;    基础API    &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>dev.langchain4j</groupId>-->
+<!--            <artifactId>langchain4j-open-ai</artifactId>-->
+<!--            &lt;!&ndash;            <version>${langchain4j.version}</version>&ndash;&gt;-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash;    高级API    &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>dev.langchain4j</groupId>-->
+<!--            <artifactId>langchain4j</artifactId>-->
+            <!--            <version>${langchain4j.version}</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash;springboot整合低阶api&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>dev.langchain4j</groupId>-->
+<!--            <artifactId>langchain4j-open-ai-spring-boot-starter</artifactId>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash;springboot整合高阶api&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>dev.langchain4j</groupId>-->
+<!--            <artifactId>langchain4j-spring-boot-starter</artifactId>-->
+<!--        </dependency>-->
+    </dependencies>
+
+
+</project>
