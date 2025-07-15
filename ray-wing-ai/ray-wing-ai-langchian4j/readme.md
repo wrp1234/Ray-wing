@@ -22,36 +22,40 @@
 1. 原生 低阶、高阶api
 ```xml
 
-<!--    基础API    -->
-<dependency>
-    <groupId>dev.langchain4j</groupId>
-    <artifactId>langchain4j-open-ai</artifactId>
-    <!--            <version>${langchain4j.version}</version>-->
-</dependency>
+<dependencies>
+   <!--    基础API    -->
+   <dependency>
+      <groupId>dev.langchain4j</groupId>
+      <artifactId>langchain4j-open-ai</artifactId>
+      <!--            <version>${langchain4j.version}</version>-->
+   </dependency>
 
-<!--    高级API    -->
-<dependency>
-    <groupId>dev.langchain4j</groupId>
-    <artifactId>langchain4j</artifactId>
-    <!--            <version>${langchain4j.version}</version>-->
-</dependency>
+   <!--    高级API    -->
+   <dependency>
+      <groupId>dev.langchain4j</groupId>
+      <artifactId>langchain4j</artifactId>
+      <!--            <version>${langchain4j.version}</version>-->
+   </dependency>
+</dependencies>
 ```
 
 2. springboot整合 高阶、低阶
 > 整合生成的ChatModel: 名称：openAiChatModel, 类型class dev.langchain4j.model.openai.OpenAiChatModel
 
 ```xml
-<!--低阶-->
-<dependency>
-    <groupId>dev.langchain4j</groupId>
-    <artifactId>langchain4j-open-ai-spring-boot-starter</artifactId>
-</dependency>
+<dependencies>
+   <!--低阶-->
+   <dependency>
+      <groupId>dev.langchain4j</groupId>
+      <artifactId>langchain4j-open-ai-spring-boot-starter</artifactId>
+   </dependency>
 
-<!--高阶-->
-<dependency>
-<groupId>dev.langchain4j</groupId>
-<artifactId>langchain4j-spring-boot-starter</artifactId>
-</dependency>
+   <!--高阶-->
+   <dependency>
+      <groupId>dev.langchain4j</groupId>
+      <artifactId>langchain4j-spring-boot-starter</artifactId>
+   </dependency>
+</dependencies>
 ```
 
 ### LLM的两种api 
@@ -153,3 +157,32 @@ server:
 - 6333 HTTP 浏览器web界面
 - 6334 用于gRPC
 - http://localhost:6333/dashboard
+
+
+## RAG Retrieval-Augmented Generation 检索增强生成
+> 先查资料后回答的机制
+> 
+幻觉
+- 已读乱回
+- 已读不回
+- 似是而非
+
+EmbeddingStoreIngestor 
+   - DocumentTransformer 文档转换
+   - DocumentSplitter 文档分割
+   - TextSegmentTransformer 转换单个文本段落
+   - EmbeddingModel 向量化模型
+   - EmbeddingStore 向量库
+
+DocumentLoader 加载器
+DocumentParser 解析器
+DocumentTransformer 文档转换器
+DocumentSplitter 文档分割
+
+## MCP Model Context Protocol 协议
+官网https://modelcontextprotocol.info/zh-cn/docs/concepts/
+MCP服务https://mcp.so/zh
+
+客户端-服务器架构
+
+支持SSE、STDIO两种通信协议
